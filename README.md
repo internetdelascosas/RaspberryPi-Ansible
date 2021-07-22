@@ -31,7 +31,7 @@ $ git clone https://github.com/internetdelascosas/RaspberryPi-Ansible.git
 ```
 ## Ejecutar
 
-Para ejecutar el playbook raspberrypi.yml que instala nginx, php, php7.0-fpm y mysql-server hay que entrar en la carpeta donde quedó el repositorio clonado y luego ejecutar el comando ansible-playbook con sudo tal como se muestra en las siguientes líneas.
+Para ejecutar el playbook raspberrypi.yml que instala nginx, php, php7.3-fpm y MariaDB hay que entrar en la carpeta donde quedó el repositorio clonado y luego ejecutar el comando ansible-playbook con sudo tal como se muestra en las siguientes líneas.
 
 ```bash
 $ cd RaspberryPi-Ansible
@@ -46,8 +46,8 @@ Al ejecutarse exitosamente Ansible, se instalará el servidor web nginx y la bas
 Por defecto el usuario root de MariaDB tiene la contraseña vacía y solo se conecta usando sockets de linux. Debes cambiarla ejecutando los siguientes comandos
 
 ```bash
-pi@raspberrypi:~ $ sudo mysql -u root -e 'UPDATE mysql.user SET password=PASSWORD("mypassword") where user = "root";'
-pi@raspberrypi:~ $ sudo mysql -u root -e 'UPDATE mysql.user SET plugin="mysql_native_password"; flush privileges;'
+$ sudo mysql -u root -e 'UPDATE mysql.user SET password=PASSWORD("mypassword") where user = "root";'
+$ sudo mysql -u root -e 'UPDATE mysql.user SET plugin="mysql_native_password"; flush privileges;'
 ```
 
 Obviamente deben cambiar la password "mypassword" por su propia contraseña siguiendo la política de contraseñas fuertes.
