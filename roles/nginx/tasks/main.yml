@@ -1,6 +1,25 @@
 ---
 # Instalacion de nginx para raspberry pi
-- name: Instalacion de nginx
-  apt: name={{ item }} state=present
-  with_items:
-  - nginx
+- name: "Instalacion de NginX"
+  apt:
+    pkg:
+      - nginx
+    state: present
+
+- name: "Copia archivo indice del sitio web"
+  copy:
+    src: index.nginx-debian.html
+    dest: /var/www/html/index.nginx-debian.html
+    owner: root
+    group: root
+    mode: 0655
+    remote_src: False
+
+- name: "Copia logo internetdelascosas"
+  copy:
+    src: internetdelascosas_logo_nombre.jpg
+    dest: /var/www/html/internetdelascosas_logo_nombre.jpg
+    owner: root
+    group: root
+    mode: 0655
+    remote_src: False

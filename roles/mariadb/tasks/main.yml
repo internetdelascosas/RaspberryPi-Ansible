@@ -1,0 +1,7 @@
+---
+  # Instalacion de MariaDB Server para Raspberry Pi
+- name: "Instala MariaDB Server"
+  apt:
+    pkg:
+      - mariadb-server
+    state: present

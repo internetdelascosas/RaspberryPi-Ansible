@@ -1,6 +1,6 @@
 ---
 - hosts: raspberrypi
   roles:
-  - mysql
+  - mariadb
   - nginx
   - php

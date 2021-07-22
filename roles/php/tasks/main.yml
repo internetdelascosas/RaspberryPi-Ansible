@@ -1,21 +1,22 @@
 ---
-- name: Instalacion de php y php7.0-fpm
-  apt: name={{ item }} state=present
-  with_items:
-  - php7.0-fpm
-  - php7.0-cli
-  - php7.0-mysql
-  - php7.0-gd
-  - php7.0-curl
-  - php7.0-xsl
-  - php7.0-geoip
-  - php7.0-ssh2
-  - php7.0-gmp
-  - php7.0-imap
-  - phpmyadmin
+- name: "Instalacion de php y php7.3-fpm"
+  apt:
+    pkg:
+      - php7.3-fpm
+      - php7.3-cli
+      - php7.3-mysql
+      - php7.3-gd
+      - php7.3-curl
+      - php7.3-xsl
+      - php7.3-geoip
+      - php7.3-ssh2
+      - php7.3-gmp
+      - php7.3-imap
+      - phpmyadmin
+    state: present
 
-- name: Inicia servicio php7.0-fpm
-  service: name=php7.0-fpm state=running enabled=yes
+- name: Inicia servicio php7.3-fpm
+  service: name=php7.3-fpm state=started enabled=yes
 
 - name: Genera link simbolico para phpmyadmin
   file: src=/usr/share/phpmyadmin dest=/var/www/html/db owner=root group=root state=link
@@ -25,4 +26,4 @@
   notify: restart {{ item }}
   with_items:
   - nginx
-  - php7.0-fpm
+  - php7.3-fpm
